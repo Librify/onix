@@ -28,7 +28,7 @@ module ONIX
 
     # DOCTYPE = "http://www.editeur.org/onix/2.1/03/reference/onix-international.dtd"
     XSI = "http://www.w3.org/2001/XMLSchema-instance"
-    SCHEMA_LOCATION = File.join(Rails.root.to_s, 'vendor', 'gems', 'injector', 'lib','support', 'ONIX_XHTML_Subset_reference.xsd').to_s
+    SCHEMA_LOCATION = File.dirname(__FILE__) + "/../onix/support/ONIX_XHTML_Subset_reference.xsd"
 
     # Default constructor.
     def initialize(output, header)

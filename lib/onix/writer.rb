@@ -26,7 +26,9 @@ module ONIX
   #
   class Writer
 
-    DOCTYPE = "http://www.editeur.org/onix/2.1/03/reference/onix-international.dtd"
+    # DOCTYPE = "http://www.editeur.org/onix/2.1/03/reference/onix-international.dtd"
+    XSI = "http://www.w3.org/2001/XMLSchema-instance"
+    SCHEMA_LOCATION = File.join(Rails.root.to_s, 'vendor', 'gems', 'injector', 'lib','support', 'ONIX_XHTML_Subset_reference.xsd').to_s
 
     # Default constructor.
     def initialize(output, header)
@@ -76,8 +78,8 @@ module ONIX
 
     def start_document
       @output.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
-      @output.write("<!DOCTYPE ONIXMessage SYSTEM \"#{DOCTYPE}\">\n")
-      @output.write("<ONIXMessage release=\"2.1\">\n")
+      # @output.write("<!DOCTYPE ONIXMessage SYSTEM \"#{DOCTYPE}\">\n")
+      @output.write("<ONIXMessage release=\"2.1\" xmlns:xsi=\"#{XSI}\" xsi:schemaLocation=\"#{SCHEMA_LOCATION}\">\n")
       @output.write(@header.to_xml.to_s)
       @output.write("\n")
     end

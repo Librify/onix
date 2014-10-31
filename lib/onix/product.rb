@@ -22,6 +22,7 @@ module ONIX
     xml_accessor :bic_main_subject, :from => "BICMainSubject"
     xml_accessor :subjects, :from => "Subject", :as => [ONIX::Subject]
     xml_accessor :audience_code, :from => "AudienceCode", :to_xml => ONIX::Formatters.two_digit
+    xml_accessor :audience, :from => "Audience", :as => [ONIX::Audience]
     xml_accessor :audience_ranges, :from => "AudienceRange", :as => [ONIX::AudienceRange]
     xml_accessor :text, :from => "OtherText", :as => [ONIX::OtherText]
     xml_accessor :media_files, :from => "MediaFile", :as => [ONIX::MediaFile]
@@ -41,6 +42,14 @@ module ONIX
     xml_accessor :measurements, :from => "Measure", :as => [ONIX::Measure]
     xml_accessor :supply_details, :from => "SupplyDetail", :as => [ONIX::SupplyDetail]
     xml_accessor :market_representations, :from => "MarketRepresentation", :as => [ONIX::MarketRepresentation]
+    xml_accessor :product_classifications, :from => "ProductClassification", :as => [ONIX::ProductClassification]
+    xml_accessor :work_identifiers, :from => "WorkIdentifier", :as => [ONIX::WorkIdentifier]
+    xml_accessor :product_content_type, :from => "ProductContentType"
+    xml_accessor :sales_rights, :from => "SalesRights", :as => [ONIX::SalesRights]
+    xml_accessor :not_for_sale, :from => "NotForSale", :as => [ONIX::NotForSale]
+    xml_accessor :epub_type, :from => "EpubType"
+    xml_accessor :epub_type_description, :from => "EpubTypeDescription"
+
 
     # some deprecated attributes. Read only
     # - See the measures array for the current way of specifying
@@ -58,6 +67,7 @@ module ONIX
       self.contributors = []
       self.websites = []
       self.subjects = []
+      self.audience = []
       self.audience_ranges = []
       self.text = []
       self.languages = []
@@ -68,6 +78,7 @@ module ONIX
       self.measurements = []
       self.supply_details = []
       self.market_representations = []
+      self.work_identifiers = []
     end
   end
 end

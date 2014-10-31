@@ -18,7 +18,7 @@ module ONIX
   # Usage:
   #
   #   ONIX::Normaliser.process("oldfile.xml", "newfile.xml")
-  #   
+  #
   # Dependencies:
   #
   # At this stage the class depends on several external apps, all commonly available
@@ -39,8 +39,8 @@ module ONIX
     def initialize(oldfile, newfile)
       raise ArgumentError, "#{oldfile} does not exist" unless File.file?(oldfile)
       raise ArgumentError, "#{newfile} already exists" if File.file?(newfile)
-      raise "xsltproc app not found" unless app_available?("xsltproc")
-      raise "tr app not found"       unless app_available?("tr")
+      # raise "xsltproc app not found" unless app_available?("xsltproc")
+      # raise "tr app not found"       unless app_available?("tr")
 
       @oldfile = oldfile
       @newfile = newfile
@@ -59,10 +59,11 @@ module ONIX
 
       # remove control chars
       dest = next_tempfile
-      remove_control_chars(@curfile, dest)
+      # remove_control_chars(@curfile, dest)
       @curfile = dest
 
-      FileUtils.cp(@curfile, @newfile)
+      # FileUtils.cp(@curfile, @newfile)
+      @newfile
     end
 
     #private
@@ -94,7 +95,9 @@ module ONIX
       inpath = File.expand_path(src)
       outpath = File.expand_path(dest)
       xsltpath = File.dirname(__FILE__) + "/../../support/switch-onix-2.1-short-to-reference.xsl"
-      `xsltproc -o #{outpath} #{xsltpath} #{inpath}`
+      # result = system("xsltproc -o #{outpath} #{xsltpath} #{inpath}")
+      result = system("java -Xms2048m -Xmx2048m -jar #{APP_CONFIG[:JAVA_JAR_FILE]} #{@oldfile} #{xsltpath} > #{@newfile}")
+      raise "Error coverting file to reference tags" unless result
     end
 
     # XML files shouldn't contain low ASCII control chars. Strip them.
@@ -102,7 +105,7 @@ module ONIX
     def remove_control_chars(src, dest)
       inpath = File.expand_path(src)
       outpath = File.expand_path(dest)
-      `cat #{inpath} | tr -d "\\000-\\010\\013\\014\\016-\\037" > #{outpath}`
+      # `cat #{inpath} | tr -d "\\000-\\010\\013\\014\\016-\\037" > #{outpath}`
     end
 
   end

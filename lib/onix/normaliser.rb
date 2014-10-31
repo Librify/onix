@@ -94,9 +94,10 @@ module ONIX
     def to_reference_tags(src, dest)
       inpath = File.expand_path(src)
       outpath = File.expand_path(dest)
-      xsltpath = File.dirname(__FILE__) + "/../../support/switch-onix-2.1-short-to-reference.xsl"
+      xsltpath = File.dirname(__FILE__) + "/../onix/support/switch-onix-2.1-short-to-reference.xsl"
+      java_jar_file_path = File.dirname(__FILE__) + "/../onix/support/saxon9he.jar"
       # result = system("xsltproc -o #{outpath} #{xsltpath} #{inpath}")
-      result = system("java -Xms2048m -Xmx2048m -jar #{APP_CONFIG[:JAVA_JAR_FILE]} #{@oldfile} #{xsltpath} > #{@newfile}")
+      result = system("java -Xms2048m -Xmx2048m -jar #{java_jar_file_path} #{@oldfile} #{xsltpath} > #{@newfile}")
       raise "Error coverting file to reference tags" unless result
     end
 

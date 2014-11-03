@@ -97,6 +97,9 @@ module ONIX
       xsltpath = File.dirname(__FILE__) + "/../../support/switch-onix-2.1-short-to-reference.xsl"
       java_jar_file_path = File.dirname(__FILE__) + "/../../support/saxon9he.jar"
       # result = system("xsltproc -o #{outpath} #{xsltpath} #{inpath}")
+
+      # Using java utility 'saxon.jar (http://saxon.sourceforge.net/)' in place of 'xsltproc'.
+      # As the later one has memory leakage problem for bigger files (size: 300 MB)
       result = system("java -Xms2048m -Xmx2048m -jar #{java_jar_file_path} #{@oldfile} #{xsltpath} > #{@newfile}")
       raise "Error coverting file to reference tags" unless result
     end

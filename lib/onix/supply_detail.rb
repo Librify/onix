@@ -22,6 +22,7 @@ module ONIX
     xml_accessor :stock, :from => "Stock", :as => [ONIX::Stock]
     xml_accessor :pack_quantity, :from => "PackQuantity", :as => Fixnum
     xml_accessor :prices, :from => "Price", :as => [ONIX::Price]
+    xml_accessor :on_sale_date, :from => "OnSaleDate"
 
     def initialize
       self.websites = []

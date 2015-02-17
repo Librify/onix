@@ -50,6 +50,17 @@ module ONIX
     xml_accessor :epub_type, :from => "EpubType"
     xml_accessor :epub_type_description, :from => "EpubTypeDescription"
 
+    # For Onix 3.0
+    xml_accessor :record_source_type, :from => "RecordSourceType"
+    xml_accessor :record_source_identifier, :from => "RecordSourceIdentifier", :as => [ONIX::RecordSourceIdentifier]
+    xml_accessor :record_source_name, :from => "RecordSourceName"
+    xml_accessor :descriptive_detail, :from => "DescriptiveDetail", :as => [ONIX::DescriptiveDetail]
+    xml_accessor :collateral_detail, :from => "CollateralDetail", :as => [ONIX::CollateralDetail]
+    xml_accessor :content_detail, :from => "ContentDetail", :as => [ONIX::ContentDetail]
+    xml_accessor :publishing_detail, :from => "PublishingDetail", :as => [ONIX::PublishingDetail]
+    xml_accessor :related_material, :from => "RelatedMaterial", :as => [ONIX::RelatedMaterial]
+    xml_accessor :product_supplies, :from => "ProductSupply", :as => [ONIX::ProductSupply]
+
 
     # some deprecated attributes. Read only
     # - See the measures array for the current way of specifying
@@ -79,6 +90,13 @@ module ONIX
       self.supply_details = []
       self.market_representations = []
       self.work_identifiers = []
+      self.record_source_identifier = []
+      self.descriptive_detail = []
+      self.collateral_detail = []
+      self.content_detail = []
+      self.publishing_detail = []
+      self.related_material = []
+      self.product_supplies = []
     end
   end
 end

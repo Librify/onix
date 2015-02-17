@@ -10,5 +10,12 @@ module ONIX
     xml_accessor :rights_country, :from =>"RightsCountry"
     xml_accessor :rights_territory, :from =>"RightsTerritory"
     xml_accessor :rights_region, :from =>"RightsRegion"
+
+    # For ONIX 3.0
+    xml_accessor :territories, :from => "Territory", :as => [ONIX::Territory]
+
+    def initialize
+      self.territories = []
+    end
   end
 end

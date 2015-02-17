@@ -24,10 +24,16 @@ module ONIX
     xml_accessor :prices, :from => "Price", :as => [ONIX::Price]
     xml_accessor :on_sale_date, :from => "OnSaleDate"
 
+    # For ONIX 3.0
+    xml_accessor :suppliers, :from => "Supplier", :as => [ONIX::Supplier]
+    xml_accessor :returns_conditions, :from => "ReturnsConditions", :as => [ONIX::ReturnsConditions]
+
     def initialize
       self.websites = []
       self.stock = []
       self.prices = []
+      self.suppliers = []
+      self.returns_conditions = []
     end
   end
 end

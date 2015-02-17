@@ -11,5 +11,13 @@ module ONIX
     xml_accessor :name_code_type_name,  :from => "NameCodeTypeName"
     xml_accessor :name_code_type_value, :from => "NameCodeTypeValue"
     xml_accessor :publisher_name,       :from => "PublisherName"
+
+    # For ONIX 3.0
+    xml_accessor :website,              :from => "Website", :as => [ONIX::Website]
+
+    def initialize
+      self.website = []
+    end
+
   end
 end

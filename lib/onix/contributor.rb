@@ -22,5 +22,13 @@ module ONIX
     xml_accessor :titles_after_names,   :from => "TitlesAfterNames"
     xml_accessor :corporate_name,       :from => "CorporateName"
     xml_accessor :biographical_note,    :from => "BiographicalNote"
+
+    # For ONIX 3.0
+    xml_accessor :name_identifier,       :from => "NameIdentifier", :as => [ONIX::NameIdentifier]
+
+    def initialize
+      self.name_identifier = []
+    end
+
   end
 end

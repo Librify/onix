@@ -7,13 +7,9 @@ module ONIX
     xml_name "TextContent"
 
     xml_accessor :text_type, :from => "TextType", :as => Fixnum
-    xml_accessor :content_audience, :from => "ContentAudience", :as => [ONIX::ContentAudience]
+    xml_accessor :content_audience, :from => "ContentAudience", :as => Fixnum
     xml_accessor :text, :from => "Text"
-    xml_accessor :source_title, from => "SourceTitle"
-
-    def initialize
-      self.content_audience = []
-    end
+    xml_accessor :source_title, :from => "SourceTitle"
 
   end
 end

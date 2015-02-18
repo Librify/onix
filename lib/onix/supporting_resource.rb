@@ -1,10 +1,10 @@
 # coding: utf-8
 
 module ONIX
-  class CollateralDetail
+  class SupportingResource
     include ROXML
 
-    xml_name "CollateralDetail"
+    xml_name "SupportingResource"
 
     xml_accessor :resource_content_type, :from => "ResourceContentType", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit
     xml_accessor :content_audience, :from => "ContentAudience", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit

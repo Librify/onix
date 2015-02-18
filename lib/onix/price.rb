@@ -20,7 +20,7 @@ module ONIX
     xml_accessor :price_effective_from, :from => "PriceEffectiveFrom"
 
     # For ONIX 3.0
-    xml_accessor :tax, :from => "Tax", :as => "Tax"
+    xml_accessor :tax, :from => "Tax", :as => [ONIX::Tax]
     xml_accessor :discounts, :from => "Discount", :as => [ONIX::Discount]
     xml_accessor :territories, :from => "Territory", :as => [ONIX::Territory]
     xml_accessor :printed_on_product, :from => "PrintedOnProduct", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit

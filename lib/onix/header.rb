@@ -35,6 +35,13 @@ module ONIX
     xml_reader    :default_linear_unit,     :from => "DefaultLinearUnit"        # deprecated in ONIX spec
     xml_reader    :default_weight_unit,     :from => "DefaultWeightUnit"        # deprecated in ONIX spec
     xml_accessor  :default_class_of_trade,  :from => "DefaultClassOfTrade"
+    xml_accessor(:sent_date_time, :from => "SentDateTime", :to_xml => ONIX::Formatters.yyyymmdd) do |val|
+      begin
+        Date.parse(val)
+      rescue
+        nil
+      end
+    end
 
     def initialize
       self.sender_identifiers = []

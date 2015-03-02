@@ -31,12 +31,12 @@ module ONIX
       # normalise oldfile and save it as newfile. oldfile
       # will be left untouched
       #
-      def process(oldfile, newfile)
-        self.new(oldfile, newfile).run
+      def process(oldfile, newfile, version = 2)
+        self.new(oldfile, newfile, version).run
       end
     end
 
-    def initialize(oldfile, newfile)
+    def initialize(oldfile, newfile, version)
       raise ArgumentError, "#{oldfile} does not exist" unless File.file?(oldfile)
       raise ArgumentError, "#{newfile} already exists" if File.file?(newfile)
       # raise "xsltproc app not found" unless app_available?("xsltproc")
@@ -47,6 +47,7 @@ module ONIX
       @curfile = next_tempfile
       FileUtils.cp(@oldfile, @curfile)
       @head    = File.open(@oldfile, "r") { |f| f.read(1024) }
+      @version = version
     end
 
     def run
@@ -94,14 +95,25 @@ module ONIX
     def to_reference_tags(src, dest)
       inpath = File.expand_path(src)
       outpath = File.expand_path(dest)
-      xsltpath = File.dirname(__FILE__) + "/../../support/switch-onix-2.1-short-to-reference.xsl"
-      java_jar_file_path = File.dirname(__FILE__) + "/../../support/saxon9he.jar"
-      # result = system("xsltproc -o #{outpath} #{xsltpath} #{inpath}")
+      puts @version
 
-      # Using java utility 'saxon.jar (http://saxon.sourceforge.net/)' in place of 'xsltproc'.
-      # As the later one has memory leakage problem for bigger files (size: 300 MB)
-      result = system("java -Xms2048m -Xmx2048m -jar #{java_jar_file_path} #{@oldfile} #{xsltpath} > #{@newfile}")
-      raise "Error coverting file to reference tags" unless result
+      if @version == 3
+        xsltpath = File.dirname(__FILE__) + "/../../support/3.0/switch-onix-3.0-tagnames-2.0.xsl"
+        java_jar_file_path = File.dirname(__FILE__) + "/../../support/3.0/SaxonHE9-6-0-4J/saxon9he.jar"
+        dtd_path = File.dirname(__FILE__) + "/../../support/3.0/ONIX_BookProduct_3.0_reference.dtd"
+
+        # result = system("xsltproc -o #{outpath} #{xsltpath} #{inpath}")
+
+        # Using java utility 'saxon.jar (http://saxon.sourceforge.net/)' in place of 'xsltproc'.
+        # As the later one has memory leakage problem for bigger files (size: 300 MB)
+        result = system("java -Xms2048m -Xmx2048m -jar #{java_jar_file_path} #{@oldfile} #{xsltpath} result-document=#{@newfile} dtd-path=#{dtd_path}")
+        raise "Error coverting file to reference tags" unless result
+      else
+        xsltpath = File.dirname(__FILE__) + "/../../support/switch-onix-2.1-short-to-reference.xsl"
+        java_jar_file_path = File.dirname(__FILE__) + "/../../support/saxon9he.jar"
+        result = system("java -Xms2048m -Xmx2048m -jar #{java_jar_file_path} #{@oldfile} #{xsltpath} > #{@newfile}")
+        raise "Error coverting file to reference tags" unless result
+      end
     end
 
     # XML files shouldn't contain low ASCII control chars. Strip them.

@@ -17,7 +17,7 @@ module ONIX
     xml_accessor :addressee_identifiers, :from => "AddresseeIdentifier", :as => [ONIX::AddresseeIdentifier]
     xml_accessor :to_company,      :from => "ToCompany"
     xml_accessor :to_person,       :from => "ToPerson"
-    xml_accessor :message_number,  :from => "MessageNumber"
+    xml_accessor :message_number,  :from => "MessageNumber", :as => Fixnum
     xml_accessor :message_repeat,  :from => "MessageRepeat", :as => Fixnum
     xml_accessor(:sent_date,       :from => "SentDate", :to_xml => ONIX::Formatters.yyyymmdd) do |val|
       begin

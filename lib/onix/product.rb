@@ -51,7 +51,7 @@ module ONIX
     xml_accessor :epub_type_description, :from => "EpubTypeDescription"
 
     # For Onix 3.0
-    xml_accessor :record_source_type, :from => "RecordSourceType"
+    xml_accessor :record_source_type, :from => "RecordSourceType", :as => Fixnum
     # TO DO
     # xml_accessor :record_source_identifier, :from => "RecordSourceIdentifier", :as => [ONIX::RecordSourceIdentifier]
     xml_accessor :record_source_name, :from => "RecordSourceName"

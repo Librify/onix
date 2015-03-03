@@ -119,3 +119,51 @@ describe ONIX::Header do
     header.sent_date.should be_nil
   end
 end
+
+# ONIX 3.0 specs
+describe ONIX::Header, "ONIX 3.0" do
+
+  before(:each) do
+    data_path = File.join(File.dirname(__FILE__),"..","data")
+    onix3_file    = File.join(data_path, "onix3_header.xml")
+    @doc = Nokogiri::XML::Document.parse(File.read(onix3_file))
+    @header_node = @doc.root
+  end
+
+  it "should correctly convert to a string" do
+    header = ONIX::Header.from_xml(@header_node.to_s)
+    header.to_xml.to_s[0,8].should eql("<Header>")
+  end
+
+  it "should provide read access to first level attributes" do
+    header = ONIX::Header.from_xml(@header_node.to_s)
+
+    header.message_note.should eql("Sample message")
+    header.message_number.should eql(231)
+    header.sent_date_time.should eql(Date.civil(2010,5,10))
+  end
+
+  it "should provide write access to first level attributes" do
+    header = ONIX::Header.new
+
+    header.message_note = "A message"
+    header.to_xml.to_s.include?("<MessageNote>A message</MessageNote>").should be_true
+
+    header.message_number = 231
+    header.to_xml.to_s.include?("<MessageNumber>231</MessageNumber>").should be_true
+  end
+
+  it "should correctly handle text with & < and >" do
+    header = ONIX::Header.new
+
+    header.message_note = "James & Healy"
+    header.to_xml.to_s.include?("James &amp; Healy").should be_true
+
+    header.message_note = "James < Healy"
+    header.to_xml.to_s.include?("James &lt; Healy").should  be_true
+
+    header.message_note = "James > Healy"
+    header.to_xml.to_s.include?("James &gt; Healy").should  be_true
+  end
+
+end

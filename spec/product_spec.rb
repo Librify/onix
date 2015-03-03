@@ -9,6 +9,7 @@ describe ONIX::Product do
     file1    = File.join(@data_path, "product.xml")
     @doc     = Nokogiri::XML::Document.parse(File.read(file1))
     @product_node = @doc.root
+
   end
 
   it "should provide read access to first level attributes" do
@@ -90,4 +91,58 @@ describe ONIX::Product do
     product.bic_main_subject.should eql("VXFC1")
     product.publication_date.should be_nil
   end
+end
+
+# ONIX 3.0 specs
+describe ONIX::Product, "ONIX 3.0" do
+
+  before(:each) do
+    @data_path = File.join(File.dirname(__FILE__),"..","data")
+
+    onix3_file    = File.join(@data_path, "onix3_product.xml")
+    @onix3_doc     = Nokogiri::XML::Document.parse(File.read(onix3_file))
+    @onix3_product_node = @onix3_doc.root
+  end
+
+  it "should provide read access to first level attributes" do
+    product = ONIX::Product.from_xml(@onix3_product_node.to_s)
+
+    product.record_reference.should eql("com.globalbookinfo.onix.01734529")
+    product.notification_type.should eql(3)
+    product.record_source_type.should eql(4)
+    product.descriptive_detail.size.should eql(1)
+    product.collateral_detail.size.should eql(1)
+    product.publishing_detail.size.should eql(1)
+    product.related_material.size.should eql(1)
+    product.product_supplies.size.should eql(1)
+  end
+
+  it "should provide read access to product IDs" do
+    product = ONIX::Product.from_xml(@onix3_product_node.to_s)
+    product.product_identifiers.size.should eql(2)
+  end
+
+  it "should provide read access to subjects" do
+    product = ONIX::Product.from_xml(@onix3_product_node.to_s)
+    product.descriptive_detail.first.subjects.size.should eql(6)
+  end
+
+  it "should provide read access to measures" do
+    product = ONIX::Product.from_xml(@onix3_product_node.to_s)
+    product.descriptive_detail.first.measures.size.should eql(4)
+  end
+
+  it "should provide write access to first level attributes" do
+    product = ONIX::Product.new
+
+    product.notification_type = 3
+    product.to_xml.to_s.include?("<NotificationType>03</NotificationType>").should be_true
+
+    product.record_reference = "com.globalbookinfo.onix.01734529"
+    product.to_xml.to_s.include?("<RecordReference>com.globalbookinfo.onix.01734529</RecordReference>").should be_true
+
+    product.record_source_type = 4
+    product.to_xml.to_s.include?("<RecordSourceType>4</RecordSourceType>").should be_true
+  end
+
 end

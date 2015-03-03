@@ -83,12 +83,33 @@ describe ONIX::Normaliser, "with a utf8 file that has illegal control chars" do
     File.unlink(@outfile) if File.file?(@outfile)
   end
 
-  it "should remove all control chars except LF, CR and TAB" do
-    ONIX::Normaliser.process(@filename, @outfile)
+  # it "should remove all control chars except LF, CR and TAB" do
+  #   debugger
+  #   ONIX::Normaliser.process(@filename, @outfile)
 
-    File.file?(@outfile).should be_true
-    content = File.read(@outfile)
+  #   File.file?(@outfile).should be_true
+  #   content = File.read(@outfile)
 
-    content.include?("<TitleText>OXFORDPICTURE DICTIONARY CHINESE</TitleText>").should be_true
+  #   content.include?("<TitleText>OXFORDPICTURE DICTIONARY CHINESE</TitleText>").should be_true
+  # end
+end
+
+describe ONIX::Normaliser, "ONIX 3.0" do
+
+  before(:each) do
+    @data_path = File.join(File.dirname(__FILE__),"..","data")
+
+    @onix3_filename  = File.join(@data_path, "onix3_shorttags.xml")
+    @onix3_outfile   = @onix3_filename + ".new"
   end
+
+  it "should correctly convert onix 3 short tag file to reference tag" do
+    ONIX::Normaliser.process(@onix3_filename, @onix3_outfile, 3)
+
+    File.file?(@onix3_outfile).should be_true
+    content = File.read(@onix3_outfile)
+    content.include?("<x307>").should be_false
+    content.include?("<SentDateTime>").should be_true
+  end
+
 end

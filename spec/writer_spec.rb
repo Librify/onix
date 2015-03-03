@@ -42,20 +42,20 @@ describe ONIX::Writer do
 
     lines = @output.string.split("\n")
 
-    lines[3][0,7].should eql("<Header")
+    lines[2][0,7].should eql("<Header")
   end
 
   it "should output the product node" do
     header = ONIX::Header.new
     product = ONIX::Product.new
 
-    ONIX::Writer.open(@output, header) do |writer| 
+    ONIX::Writer.open(@output, header) do |writer|
       writer << product
     end
 
     lines = @output.string.split("\n")
 
-    lines[4][0,8].should eql("<Product")
+    lines[3][0,8].should eql("<Product")
   end
 
   it "should correctly store finished state" do

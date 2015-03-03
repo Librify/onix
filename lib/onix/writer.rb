@@ -82,7 +82,7 @@ module ONIX
 
       #Changed SCHEMA_LOCATION to local as its increasing traffic on EDItEUR website
 
-      @output.write("<ONIXMessage release=\"2.1\" xmlns:xsi=\"#{XSI}\" xsi:schemaLocation=\"#{SCHEMA_LOCATION}\">\n")
+      @output.write("<!DOCTYPE ONIXMessage release=\"2.1\" xmlns:xsi=\"#{XSI}\" xsi:schemaLocation=\"#{SCHEMA_LOCATION}\">\n")
       @output.write(@header.to_xml.to_s)
       @output.write("\n")
     end

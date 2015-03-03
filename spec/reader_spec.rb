@@ -74,7 +74,7 @@ describe ONIX::Reader do
 
     products.size.should eql(1)
     products.first.titles.size.should eql(1)
-    products.first.titles.first.title_text.should eql("High Noon\342\200\223in Nimbin")
+    products.first.titles.first.title_text.should eql("High Noon\55in Nimbin")
     products.first.record_reference.should eql("9780732287573")
   end
 
@@ -151,5 +151,59 @@ describe ONIX::Reader do
     reader.each do |product|
       product.should be_a_kind_of(ONIX::APAProduct)
     end
+  end
+end
+
+
+# ONIX 3.0 specs
+describe ONIX::Reader, "ONIX 3.0" do
+
+  before(:each) do
+    @data_path = File.join(File.dirname(__FILE__),"..","data")
+    @onix3_file1    = File.join(@data_path, "9780007232833.xml")
+  end
+
+  it "should initialize with a onix 3.0 filename" do
+    reader = ONIX::Reader.new(@onix3_file1)
+    reader.instance_variable_get("@reader").should be_a_kind_of(Nokogiri::XML::Reader)
+  end
+
+  it "should initialize with an IO object" do
+    File.open(@onix3_file1,"rb") do |f|
+      reader = ONIX::Reader.new(f)
+      reader.instance_variable_get("@reader").should be_a_kind_of(Nokogiri::XML::Reader)
+    end
+  end
+
+  it "should provide access to various XML metadata from onix 3.0 file" do
+    reader = ONIX::Reader.new(@onix3_file1)
+    reader.release.should eql(BigDecimal.new("3.0"))
+  end
+
+  it "should provide access to the header in an ONIX 3.0 file" do
+    reader = ONIX::Reader.new(@onix3_file1)
+    reader.header.should be_a_kind_of(ONIX::Header)
+  end
+
+  it "should iterate over all product records in an ONIX 3.0 file" do
+    reader = ONIX::Reader.new(@onix3_file1)
+    counter = 0
+    reader.each do |product|
+      product.should be_a_kind_of(ONIX::Product)
+      counter += 1
+    end
+
+    counter.should eql(1)
+  end
+
+  it "should iterate over all product records in an ONIX file" do
+    reader = ONIX::Reader.new(@onix3_file1)
+    products = []
+    reader.each do |product|
+      products << product
+    end
+
+    products.size.should eql(1)
+    products[0].record_reference.should eql("com.globalbookinfo.onix.01734529")
   end
 end

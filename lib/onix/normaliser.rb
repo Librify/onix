@@ -95,7 +95,6 @@ module ONIX
     def to_reference_tags(src, dest)
       inpath = File.expand_path(src)
       outpath = File.expand_path(dest)
-      puts @version
 
       if @version == 3
         xsltpath = File.dirname(__FILE__) + "/../../support/3.0/switch-onix-3.0-tagnames-2.0.xsl"

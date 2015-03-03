@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Header>
+	<Sender>
+		<SenderName>Global Bookinfo</SenderName>
+		<ContactName>Jane King, +1 555 321 7654</ContactName>
+		<EmailAddress>jbk@globalbookinfo.com</EmailAddress>
+	</Sender>
+	<Addressee>
+		<AddresseeName>BooksBooksBooks.com</AddresseeName>
+	</Addressee>
+	<MessageNumber>231</MessageNumber>
+	<SentDateTime>20100510T1115-0400</SentDateTime>
+	<MessageNote>Sample message</MessageNote>
+</Header>

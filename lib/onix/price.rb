@@ -25,6 +25,7 @@ module ONIX
     xml_accessor :territories, :from => "Territory", :as => [ONIX::Territory]
     xml_accessor :printed_on_product, :from => "PrintedOnProduct", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit
     xml_accessor :position_on_product, :from => "PositionOnProduct", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit
+    xml_accessor :price_type, :from => "PriceType", :as => Fixnum, :to_xml => ONIX::Formatters.two_digit
 
     def initialize
       self.discounts_coded = []

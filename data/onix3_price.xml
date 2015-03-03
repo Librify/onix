@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Price>
+	<PriceType>02</PriceType>
+	<DiscountCoded>
+		<DiscountCodeType>01</DiscountCodeType>
+		<DiscountCode>AHACP029</DiscountCode>
+	</DiscountCoded>
+	<PriceStatus>02</PriceStatus>
+	<PriceAmount>7.99</PriceAmount>
+	<Tax>
+		<TaxType>01</TaxType>
+		<TaxRateCode>Z</TaxRateCode>
+		<TaxRatePercent>0</TaxRatePercent>
+		<TaxableAmount>7.99</TaxableAmount>
+		<TaxAmount>0.00</TaxAmount>
+	</Tax>
+	<CurrencyCode>GBP</CurrencyCode>
+	<Territory>
+		<CountriesIncluded>GB</CountriesIncluded>
+	</Territory>
+	<PrintedOnProduct>02</PrintedOnProduct>
+	<PositionOnProduct>01</PositionOnProduct>
+</Price>

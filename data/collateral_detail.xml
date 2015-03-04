@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CollateralDetail>
+	<TextContent>
+		<TextType>02</TextType>
+		<ContentAudience>00</ContentAudience>
+		<Text textformat="05"><p><strong>Perennial relaunches the first novel in the classic Martin Beck detective series from the 1960s</strong> – the novels that have inspired all crime fiction written ever since.</p></Text>
+	</TextContent>
+	<TextContent>
+		<TextType>03</TextType>
+		<ContentAudience>00</ContentAudience>
+		<Text textformat="05"><p>Widely recognised as the among the greatest crime fiction ever written, this is the first of a series of stories that pioneered the police procedural genre. The series was translated into 35 languages, sold over 10 million copies around the world, and inspired writers from Henning Mankell to Jonathan Franzen.</p><p>Written in 1965, <em>Roseanna</em> is the work of Maj Sjöwall and Per Wahlöö – a husband and wife team from Sweden, and this volume has a new introduction to help bring their work to a new audience. The novel follows the fortunes of the detective Martin Beck, whose enigmatic and taciturn character has inspired countless other policemen in crime fiction.</p><p><em>Roseanna</em> begins on a July afternoon: the body of a young woman is dredged from a canal near Sweden’s beautiful Lake Vättern. Three months later, all that Police Inspector Martin Beck knows is that her name is Roseanna, that she came from Lincoln, Nebraska, and that she could have been strangled by any one of eighty-five people.</p><p>With its authentically rendered settings and vividly realized characters, and its command over the intricately woven details of police detection, <em>Roseanna</em> is a masterpiece of suspense and sadness.</p></Text>
+	</TextContent>
+	<TextContent>
+		<TextType>06</TextType>
+		<ContentAudience>00</ContentAudience>
+		<Text textformat="05"><p>‘The writing is elegant and surprisingly humorous – if you haven’t come across Beck before, you’re in for a treat.’</p></Text>
+		<SourceTitle>The Guardian</SourceTitle>
+	</TextContent>
+	<TextContent>
+		<TextType>06</TextType>
+		<ContentAudience>00</ContentAudience>
+		<Text textformat="05"><p>‘Their mysteries don’t just read well; they reread even better. Witness, wife, petty cop or crook – they’re all real characters even if they get just a few sentences. The plots hold, because they’re ingenious but never inhuman.’</p></Text>
+		<SourceTitle>New York Times</SourceTitle>
+	</TextContent>
+	<CitedContent>
+		<CitedContentType>03</CitedContentType>
+		<ContentAudience>00</ContentAudience>
+		<SourceType>01</SourceType>
+		<SourceTitle>Observer Magazine</SourceTitle>
+		<CitationNote>Interview with Maj Sjöwall by Louise France</CitationNote>
+		<ResourceLink>http://www.guardian.co.uk/books/2009/nov/22/crime-thriller-maj-sjowall-sweden</ResourceLink>
+		<ContentDate>
+			<ContentDateRole>01</ContentDateRole>
+			<Date dateformat="00">20091122</Date>
+		</ContentDate>
+	</CitedContent>
+	<SupportingResource>
+		<ResourceContentType>01</ResourceContentType>
+		<ContentAudience>00</ContentAudience>
+		<ResourceMode>03</ResourceMode>
+		<ResourceVersion>
+			<ResourceForm>02</ResourceForm>
+			<ResourceVersionFeature>
+				<ResourceVersionFeatureType>01</ResourceVersionFeatureType>
+				<FeatureValue>D502</FeatureValue>
+			</ResourceVersionFeature>
+			<ResourceVersionFeature>
+				<ResourceVersionFeatureType>02</ResourceVersionFeatureType>
+				<FeatureValue>341</FeatureValue>
+			</ResourceVersionFeature>
+			<ResourceVersionFeature>
+				<ResourceVersionFeatureType>03</ResourceVersionFeatureType>
+				<FeatureValue>222</FeatureValue>
+			</ResourceVersionFeature>
+			<ResourceLink>http://www.harpercollins.co.uk/covers/9780007232833.jpg</ResourceLink>
+			<ContentDate>
+				<ContentDateRole>17</ContentDateRole>
+				<Date dateformat="00">20060412</Date>
+			</ContentDate>
+		</ResourceVersion>
+	</SupportingResource>
+	<SupportingResource>
+		<ResourceContentType>15</ResourceContentType>
+		<ContentAudience>00</ContentAudience>
+		<ResourceMode>06</ResourceMode>
+		<ResourceVersion>
+			<ResourceForm>01</ResourceForm>
+			<ResourceLink>http://browseinside.harpercollins.co.uk/pageview?isbn=9780007232833</ResourceLink>
+		</ResourceVersion>
+	</SupportingResource>
+</CollateralDetail>

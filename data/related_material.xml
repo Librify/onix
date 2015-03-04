@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelatedMaterial>
+	<RelatedWork>
+		<WorkRelationCode>01</WorkRelationCode>
+		<WorkIdentifier>
+			<WorkIDType>11</WorkIDType>
+			<IDValue>A0220090000154FA</IDValue>
+		</WorkIdentifier>
+	</RelatedWork>
+	<RelatedProduct>
+		<ProductRelationCode>06</ProductRelationCode>
+		<ProductRelationCode>27</ProductRelationCode>
+		<ProductIdentifier>
+			<ProductIDType>03</ProductIDType>
+			<IDValue>9780007324378</IDValue>
+		</ProductIdentifier>
+		<ProductIdentifier>
+			<ProductIDType>15</ProductIDType>
+			<IDValue>9780007324378</IDValue>
+		</ProductIdentifier>
+	</RelatedProduct>
+</RelatedMaterial>

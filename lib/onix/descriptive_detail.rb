@@ -12,7 +12,7 @@ module ONIX
     xml_accessor :measures, :from => "Measure", :as => [ONIX::Measure]
     xml_accessor :country_of_manufacture, :from => "CountryOfManufacture"
     xml_accessor :product_classifications, :from => "ProductClassification"
-    # xml_accessor :collection, :from => "Collection", :as => [ONIX::Collection]
+    xml_accessor :collections, :from => "Collection", :as => [ONIX::Collection]
     xml_accessor :title_details, :from => "TitleDetail", :as => [ONIX::TitleDetail]
     xml_accessor :contributors, :from => "Contributor", :as => [ONIX::Contributor]
     xml_accessor :contributor_statement, :from => "ContributorStatement"
@@ -31,7 +31,7 @@ module ONIX
 
     def initialize
       self.measures = []
-      # self.collection = []
+      self.collections = []
       self.title_details = []
       self.contributors = []
       self.languages = []
